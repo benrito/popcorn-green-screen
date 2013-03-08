@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<head>
+
+<!-- Link to Popcorn -->
+
+<!-- The Style -->
+
+<link rel="stylesheet" href="css/style.css" />
+
+<!-- Pop the Corn -->
+
+</head>
+
+<!-- The Body -->
+
+<body>	
+
+<!-- The Container -->
+
+	<div id="container">
+	
+	
+<!--Top Layer: The Chroma Keyed Video-->		
+
+		<canvas id="foreground_video" class="full">
+		</canvas>
+
+<!--The Source Video, Which Is Not Visible on the Page-->		
+
+		<video id="source_video_for_chroma" controls>
+  			<source src="video/wtf_greenscreen_sm.mp4">
+  			<source src="video/wtf_greenscreen_sm.webm">
+		</video>
+
+<!--Middle Layer: Background Area, Which You Can Populate with Content-->		
+
+		<div id="background_area" class="full">
+		</div>
+
+
+<!--Bottom Layer: The Background Video, Which Is Not Visible on the Page-->		
+
+		<video id="background_video" class="full" controls>
+  			<source src="video/test.webm">
+  			<source src="video/test.mp4">
+		</video>
+
+<!-- End Container -->
+
+	</div>	
+
+<!-- End Body -->
+
+</body>
+
+
+<!-- Libraries We Include -->
+
+<script src="js/popcorn-complete.js"></script>
+<script src="js/seriously.js"></script>
+<script src="js/seriously.chroma.js"></script>
+
+<!-- The Seriously Script to Make Chroma Key Work -->
+
+<script type="text/javascript">
+	var seriously, // the main object that holds the entire composition
+	    video, // a reference to the video element. It's invisible to the user.
+	    chroma, // a chroma effect
+	    target; // a wrapper object for our target canvas
+	
+	seriously = new Seriously();
+	video = seriously.source('#source_video_for_chroma');
+	target = seriously.target('#canvas');
+	chroma = seriously.effect('chroma');
+
+	// you can mess with these values to tweak how chroma works -->
+
+	var chroma = seriously.effect('chroma');
+	chroma.weight = 1.32;
+	chroma.balance = 0;
+	chroma.screen = 'rgb(77, 239, 41)';
+    chroma.clipWhite = 0.85;
+    chroma.clipBlack = 0.5125;
+
+	// connect all our nodes in the right order
+	chroma.source = video;
+	target.source = chroma;
+	seriously.go();
+ </script>
+
+<!-- The Popcorn Scripts -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var pop = Popcorn("#background_video");
+    
+	pop.footnote({
+		start:'1', // Our start time in seconds
+		end:'6', // Our end time in seconds
+		text:"Hello world!", // The text we want to display
+		target: "background_area",
+	});
+
+	pop.image({
+		start:'6.1', // Our start time in seconds
+		end:'9', // Our end time in seconds
+		src: "img/cat.jpg",
+		target: "background_area",
+		effect: "applyclass", // Apply a CSS class to the target container
+		/* applyclass: "flip, black, move_down", // Specify which CSS class */
+	});
+
+	pop.image({
+		start:'9.1', // Our start time in seconds
+		end:'12', // Our end time in seconds
+		src: "img/cat.jpg",
+		target: "background_area",
+		effect: "applyclass", // Apply a CSS class to the target container
+		/* applyclass: "flip, black, move_down", // Specify which CSS class */
+	});
+
+	pop.googlemap({
+		start: 13,
+		end: 19,
+		type: "ROADMAP",
+		target: "background_area",
+		lat: 43.665429,
+		lng: -79.403323,
+		zoom: 5,
+	});
+
+	pop.webpage({
+		id: "webpages-a",
+		start: 19.1,
+		end: 25,
+		src: "http://itp.nyu.edu/itp/",
+		target: "background_area",
+	});
+
+});
+</script>
+
+</html>

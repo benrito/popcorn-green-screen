@@ -1,0 +1,131 @@
+/* Meta */
+
+body {
+	margin-top: 0px;
+	background-color: black;
+}
+iframe {
+	width: 100%
+	height: 480px;
+}
+p {
+	color: white;
+	font-size: 20px;
+}
+a {
+	color: blue;
+	font-size: 30px;
+}
+
+/* Page elements */
+
+#container {
+	margin: 0px auto;
+	top: 100px;
+	width: 100%;
+	background-color: grey;
+	-webkit-transition: all .5s ease-in-out;
+	-moz-transition: all .5s ease-in-out;
+	-o-transition: all .5s ease-in-out;
+	transition: all .5s ease-in-out;
+}
+#container img {
+	position: fixed;
+	margin: 0px auto;
+}
+#container iframe {
+	position: fixed;
+}
+#container video {
+}
+#box {
+	color: white;
+	float: right;
+	width: 375px;
+	height: 230px; 
+	padding: 20px;
+	-webkit-transition: all .5s ease-in-out;
+	-moz-transition: all .5s ease-in-out;
+	-o-transition: all .5s ease-in-out;
+	transition: all .5s ease-in-out;
+}
+#box img {
+	width:100%;
+	overflow: hidden;
+	z-index: 1 !important;
+}
+
+#foreground_video {
+	position: absolute;
+	z-index: 3;
+	pointer-events: none;
+	overflow: hidden;
+	/*figure out something for auto height when dimensions don't match*/
+}
+#background_area{
+	position: absolute;
+	z-index: 2;	
+}
+#background_area img {
+	width:100%;
+	overflow: hidden;
+	z-index: 1 !important;
+}
+#background_area iframe {
+	width:100%;
+	overflow: hidden;
+	z-index: 1 !important;
+}
+#background_video{
+	position: absolute;
+	margin: 0px auto;
+	z-index: 1;	
+}
+#source_video_for_chroma{
+	display: none;
+}
+/* Some classes */
+
+.black {
+	background-color: black;
+}
+.verdana {
+	font-family: verdana;
+}
+.move_down {
+	margin-top: 200px;
+}
+.full {
+	height: 100%;
+}
+
+/* Fun effects */
+
+.scale {
+	transform: scale(2,2);
+	-ms-transform: scale(2,2); /* IE 9 */
+	-webkit-transform: scale(2,2); /* Safari and Chrome */
+	-o-transform: scale(2,2); /* Opera */
+	-moz-transform: scale(2,2); /* Firefox */
+}
+.translate {
+	transform: translate(50px,100px);
+	-ms-transform: translate(50px,100px); /* IE 9 */
+	-webkit-transform: translate(50px,100px); /* Safari and Chrome */
+	-o-transform: translate(50px,100px); /* Opera */
+	-moz-transform: translate(50px,100px); /* Firefox */
+}
+.skew {
+	transform: skew(30deg,20deg);
+	-ms-transform: skew(30deg,20deg); /* IE 9 */
+	-webkit-transform: skew(30deg,20deg); /* Safari and Chrome */
+	-o-transform: skew(30deg,20deg); /* Opera */
+	-moz-transform: skew(30deg,20deg); /* Firefox */
+}
+.flip {
+	transform: rotateY(360deg);
+	-webkit-transform: rotateY(360deg); /* Safari and Chrome */
+	-moz-transform: rotateY(360deg); /* Firefox */
+}
+
+
